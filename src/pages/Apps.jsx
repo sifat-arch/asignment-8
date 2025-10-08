@@ -23,7 +23,7 @@ const Apps = () => {
 
       <div className="flex justify-between items-center mt-10">
         <p className="text-xl font-bold">
-          <span>(129) Apps Found</span>
+          <span>({searchedData.length}) Apps Found</span>
         </p>
 
         <div>
