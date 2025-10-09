@@ -26,11 +26,11 @@ const Home = () => {
           make an impact.{" "}
         </p>
 
-        <div>
+        <div className="flex flex-col md:flex-row justify-center gap-3 ">
           <a
             href="https://play.google.com/store/games?device=windows"
             target="_blank"
-            className="btn"
+            className="btn w-full md:w-50"
           >
             <span>
               <img className="w-6" src={play} alt="" />
@@ -40,7 +40,7 @@ const Home = () => {
           <a
             href="https://www.apple.com/app-store/"
             target="_blank"
-            className="btn ml-3 px-5.5"
+            className="btn w-full md:w-50"
           >
             <span>
               <img className="w-6" src={app} alt="" />
@@ -53,23 +53,29 @@ const Home = () => {
           <img src={hero} className="block mx-auto mt-10 w-2/4" alt="" />
 
           <div className="border w-full py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-xl">
-            <h1 className="text-white text-3xl font-bold mb-10">
+            <h1 className="text-white text-2xl md:text-3xl font-bold mb-10">
               Trusted by Millions, Built for You
             </h1>
             <div className="flex justify-center gap-14">
               <div>
                 <p className="text-white text-sm">Total Reviews</p>
-                <p className="text-white text-4xl font-bold">29.6M</p>
+                <p className="text-white text-2xl md:text-4xl font-bold">
+                  29.6M
+                </p>
                 <p className="text-white text-sm">21% more than last month</p>
               </div>
               <div>
                 <p className="text-white text-sm">Total Downloads</p>
-                <p className="text-white text-4xl font-bold">906K</p>
+                <p className="text-white text-2xl md:text-4xl font-bold">
+                  906K
+                </p>
                 <p className="text-white text-sm">46% more than last month</p>
               </div>
               <div>
                 <p className="text-white text-sm">Active Apps</p>
-                <p className="text-white text-4xl font-bold">132+</p>
+                <p className="text-white text-2xl md:text-4xl font-bold">
+                  132+
+                </p>
                 <p className="text-white text-sm">31 more will Launch</p>
               </div>
             </div>
@@ -85,7 +91,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-4 gap-5 mt-7">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-7">
           {slicedCardData.map((card) => (
             <Cards key={card.id} card={card} />
           ))}

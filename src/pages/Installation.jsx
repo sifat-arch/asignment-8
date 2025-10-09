@@ -112,7 +112,7 @@ const Installation = () => {
               <div>
                 <p className="text-xl font-bold">{data.title}</p>
 
-                <div className="flex gap-6 items-center mt-4">
+                <div className="flex flex-col md:flex-row gap-6 items-center mt-4">
                   <div className="flex gap-1">
                     <img className="w-6" src={download} alt="" />
                     <p className="text-[#00D390]">

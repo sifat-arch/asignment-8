@@ -65,9 +65,13 @@ const AppDetails = () => {
         </div>
       ) : (
         <div>
-          <div className="flex gap-8">
+          <div className="flex gap-8 flex-col md:flex-row">
             <div>
-              <img className="h-72 max-w-72" src={findData.image} alt="" />
+              <img
+                className="h-72 w-full md:max-w-72"
+                src={findData.image}
+                alt=""
+              />
             </div>
 
             <div className="flex-1">

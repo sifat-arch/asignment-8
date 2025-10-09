@@ -33,7 +33,7 @@ const Apps = () => {
         </p>
       </div>
 
-      <div className="flex justify-between items-center mt-10">
+      <div className="flex flex-col md:flex-row gap-3 justify-between items-center mt-10">
         <p className="text-xl font-bold">
           <span>({searchedData.length}) Apps Found</span>
         </p>
@@ -68,7 +68,7 @@ const Apps = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-5 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-4">
         {loading ? (
           <LoadingSpinner text="Searching apps..." />
         ) : searchedData.length === 0 ? (
