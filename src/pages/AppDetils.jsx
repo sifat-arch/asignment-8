@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLoaderData, useParams, useRouteError } from "react-router";
+import React, { useState } from "react";
+import { Link, useLoaderData, useParams } from "react-router";
 import Error from "../assets/App-Error.png";
 
 import download from "../assets/icon-downloads.png";
 import star from "../assets/icon-ratings.png";
 import review from "../assets/icon-review.png";
+import { toast, ToastContainer } from "react-toastify";
 import {
   ComposedChart,
   Line,
@@ -18,7 +19,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { setItem } from "../utils/LocalStorage";
-import AppError from "./AppError";
 
 const AppDetails = () => {
   const allData = useLoaderData();
@@ -30,13 +30,22 @@ const AppDetails = () => {
 
   const handleClick = () => {
     setItem(findData);
-    alert("Installed successfully");
+    toast.success("Success! App is installing");
 
     setIsInstalled(true);
   };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
       {!findData ? (
         <div>
           <img className="block mx-auto" src={Error} alt="" />

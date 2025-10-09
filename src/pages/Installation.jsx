@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import download from "../assets/icon-downloads.png";
 import star from "../assets/icon-ratings.png";
 import { getItem } from "../utils/LocalStorage";
 import LoadingSpinner from "../components/LoadingSpiner";
+import { toast, ToastContainer } from "react-toastify";
 
 const Installation = () => {
   const [sort, setSort] = useState();
@@ -42,6 +42,8 @@ const Installation = () => {
     localStorage.setItem("installedData", JSON.stringify(updatedData));
 
     setSortedData(updatedData);
+
+    toast.success("App Is Uninstalled");
   };
 
   if (loading) {
@@ -49,6 +51,16 @@ const Installation = () => {
   }
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000} // ৩ সেকেন্ড পরে বন্ধ হবে
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
+
       <div className="text-center">
         <p className="text-3xl font-bold">Your Installed Apps</p>
         <p className="text-gray-400">

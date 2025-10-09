@@ -16,7 +16,7 @@ const MainLayout = () => {
 
       {isLoading && <LoadingSpinner text="Please wait..." />}
 
-      <div className="flex-1 max-w-screen-xl mx-auto w-full px-4 md:px-8 lg:px-12 py-4 md:py-8 lg:py-12">
+      <div className="flex-1 w-full px-4 md:px-8 lg:px-12 py-4 md:py-8 lg:py-12">
         {error ? <CommonError error={error} /> : <Outlet />}
       </div>
       <Footer />

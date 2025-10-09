@@ -14,7 +14,6 @@ export const setItem = (product) => {
   const isDuplicate = data.some((item) => item.id === product.id);
 
   if (isDuplicate) {
-    alert("data already exist");
     return;
   }
 
