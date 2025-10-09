@@ -44,6 +44,8 @@ const AppDetails = () => {
     setIsInstalled(true);
   };
 
+  console.log(findData);
+
   return (
     <>
       <ToastContainer
