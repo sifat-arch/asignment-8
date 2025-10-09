@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router";
 import Error from "../assets/App-Error.png";
 
@@ -18,7 +18,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { setItem } from "../utils/LocalStorage";
+import { getItem, setItem } from "../utils/LocalStorage";
 
 const AppDetails = () => {
   const allData = useLoaderData();
@@ -28,10 +28,20 @@ const AppDetails = () => {
 
   const findData = allData.find((card) => card.id === pID);
 
+  useEffect(() => {
+    const loadedData = getItem();
+
+    const isavalbleData = loadedData.some((item) => item.id === findData.id);
+
+    if (isavalbleData) {
+      setIsInstalled(true);
+      return;
+    }
+  }, []);
+
   const handleClick = () => {
     setItem(findData);
     toast.success("Success! App is installing");
-
     setIsInstalled(true);
   };
 
