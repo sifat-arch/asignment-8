@@ -1,16 +1,22 @@
-# React + Vite
+App Name:Assignment-8,
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+description: This is a fully responsive App Store web application built with modern frontend technologies.
+It features a clean and user-friendly interface where users can browse apps, install them, and manage their installed list.
 
-Currently, two official plugins are available:
+Key functionalities include:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Beautiful and responsive design across all devices
 
-## React Compiler
+- App cards displaying essential information
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Install and uninstall apps with one click
 
-## Expanding the ESLint configuration
+- Search functionality to quickly find apps
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Sorting options to organize apps by name, rating, or downloads
+
+- LocalStorage integration to persist installed apps even after page reload
+
+Overall, this project demonstrates effective use of React, Tailwind CSS, and LocalStorage to create a seamless and interactive user experience — similar to a real-world app marketplace.
+
+Technologies:react , tailwind css , daisyui , react-router , react recharts ,

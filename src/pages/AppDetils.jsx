@@ -128,21 +128,23 @@ const AppDetails = () => {
           </div>
 
           {/* chart */}
-          <div className=" h-96 w-full mt-10 ">
+          <div className="h-96 w-full mt-10">
             <p className="text-2xl font-bold mb-7">Ratings</p>
 
             <div>
               <ResponsiveContainer width="100%" height={400}>
                 <ComposedChart
                   data={findData.ratings}
-                  margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                  layout="vertical" // ✅ এটিই মূল পরিবর্তন
+                  margin={{ top: 20, right: 20, bottom: 20, left: 40 }}
                 >
                   <CartesianGrid stroke="#f5f5f5" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
+                  <XAxis type="number" /> {/* ✅ এখন সংখ্যা x-axis এ */}
+                  <YAxis dataKey="name" type="category" />{" "}
+                  {/* ✅ নাম y-axis এ */}
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="count" barSize={20} fill="#413ea0" />
+                  <Bar dataKey="count" barSize={20} fill="orange" />
                 </ComposedChart>
               </ResponsiveContainer>
             </div>
