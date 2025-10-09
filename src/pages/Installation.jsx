@@ -1,14 +1,23 @@
-import React, { useState } from "react";
-import app from "../assets/app-stor.png";
+import React, { useEffect, useState } from "react";
+
 import download from "../assets/icon-downloads.png";
 import star from "../assets/icon-ratings.png";
 import { getItem } from "../utils/LocalStorage";
+import LoadingSpinner from "../components/LoadingSpiner";
 
 const Installation = () => {
-  const storedData = getItem();
   const [sort, setSort] = useState();
+  const [sortedData, setSortedData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [sortedData, setSortedData] = useState(storedData);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      const storedData = getItem() || [];
+      setSortedData(storedData);
+      setLoading(false);
+    }, 400);
+  }, []);
 
   const handleSort = (type) => {
     setSort(type);
@@ -28,12 +37,16 @@ const Installation = () => {
   };
 
   const handleRemove = (id) => {
-    const updatedData = storedData.filter((data) => data.id !== id);
+    const updatedData = sortedData.filter((data) => data.id !== id);
 
     localStorage.setItem("installedData", JSON.stringify(updatedData));
 
     setSortedData(updatedData);
   };
+
+  if (loading) {
+    return <LoadingSpinner text="Loading your installed apps..." />;
+  }
   return (
     <div>
       <div className="text-center">
@@ -46,7 +59,7 @@ const Installation = () => {
       <div>
         <div className="flex justify-between items-center mt-10">
           <p className="text-xl font-bold">
-            <span>({storedData.length}) Apps Found</span>
+            <span>({sortedData.length}) Apps Found</span>
           </p>
 
           <div>
@@ -74,7 +87,7 @@ const Installation = () => {
 
       {sortedData.length === 0 ? (
         <p className="text-center mt-50 text-7xl text-gray-300 font-bold">
-          No Cards
+          No Apps
         </p>
       ) : (
         sortedData.map((data) => (

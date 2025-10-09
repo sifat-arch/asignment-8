@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import Cards from "../components/Cards";
+import LoadingSpinner from "../components/LoadingSpiner";
+import NotFoundPage from "../components/NotFoundPage";
 
 const Apps = () => {
   const allCardData = useLoaderData();
 
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 50);
+  };
 
   const searchedData = allCardData.filter((card) =>
     card.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())
@@ -50,16 +62,20 @@ const Apps = () => {
               required
               placeholder="Search"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={handleSearch}
             />
           </label>
         </div>
       </div>
 
       <div className="grid grid-cols-4 gap-5 mt-4">
-        {searchedData.length === 0
-          ? "no data found"
-          : searchedData.map((card) => <Cards key={card.id} card={card} />)}
+        {loading ? (
+          <LoadingSpinner text="Searching apps..." />
+        ) : searchedData.length === 0 ? (
+          <NotFoundPage />
+        ) : (
+          searchedData.map((card) => <Cards key={card.id} card={card} />)
+        )}
       </div>
     </div>
   );
