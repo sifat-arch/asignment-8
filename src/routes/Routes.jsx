@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
 import Apps from "../pages/Apps";
 import Installation from "../pages/Installation";
+
 import AppDetails from "../pages/AppDetils";
 
 const router = createBrowserRouter([

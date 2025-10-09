@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router";
-import Error from "../assets/App-Error.png";
-
+import { useLoaderData, useParams } from "react-router";
 import download from "../assets/icon-downloads.png";
 import star from "../assets/icon-ratings.png";
 import review from "../assets/icon-review.png";
@@ -19,6 +17,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { getItem, setItem } from "../utils/LocalStorage";
+import AppError from "./AppError";
 
 const AppDetails = () => {
   const allData = useLoaderData();
@@ -57,22 +56,7 @@ const AppDetails = () => {
         theme="colored"
       />
       {!findData ? (
-        <div>
-          <img className="block mx-auto" src={Error} alt="" />
-          <div className="text-center mt-5">
-            <h1 className="text-4xl font-bold">OPPS!! APP NOT FOUND</h1>
-            <p className="text-gray-400 mt-5">
-              The App you are requesting is not found on our system. please try
-              another apps
-            </p>
-
-            <Link to="/apps">
-              <button className="btn bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-xl mt-4">
-                Go Back
-              </button>
-            </Link>
-          </div>
-        </div>
+        <AppError />
       ) : (
         <div>
           <div className="flex gap-8 flex-col md:flex-row">
@@ -135,14 +119,12 @@ const AppDetails = () => {
               <ResponsiveContainer width="100%" height={400}>
                 <ComposedChart
                   data={findData.ratings}
-                  layout="vertical" // ✅ এটিই মূল পরিবর্তন
+                  layout="vertical"
                   margin={{ top: 20, right: 20, bottom: 20, left: 40 }}
                 >
                   <CartesianGrid stroke="#f5f5f5" />
-                  <XAxis type="number" /> {/* ✅ এখন সংখ্যা x-axis এ */}
-                  <YAxis dataKey="name" type="category" />{" "}
-                  {/* ✅ নাম y-axis এ */}
-                  <Tooltip />
+                  <XAxis type="number" />
+                  <YAxis dataKey="name" type="category" /> <Tooltip />
                   <Legend />
                   <Bar dataKey="count" barSize={20} fill="orange" />
                 </ComposedChart>
