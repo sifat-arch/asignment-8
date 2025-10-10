@@ -5,6 +5,7 @@ import Apps from "../pages/Apps";
 import Installation from "../pages/Installation";
 
 import AppDetails from "../pages/AppDetils";
+import AppError from "../pages/AppError";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       {
         path: "apps/:id",
         loader: () => fetch("/data.json"),
+        errorElement: <AppError />,
         Component: AppDetails,
       },
     ],
